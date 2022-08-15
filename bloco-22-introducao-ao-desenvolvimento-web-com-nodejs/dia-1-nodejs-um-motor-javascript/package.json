@@ -5,6 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "imc": "node imcCalculator.js",
+    "speed": "node velocidade.js",
+    "sorteio": "node sorteio.js",
     "start": "node index.js"
   },
   "author": "Guilherme Martins Pereira Alves",
