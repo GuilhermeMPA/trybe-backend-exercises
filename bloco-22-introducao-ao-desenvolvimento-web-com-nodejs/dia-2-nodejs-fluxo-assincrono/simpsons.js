@@ -7,8 +7,20 @@ async function readAllSimpsons() {
   simpsonsByIdAndName.forEach((simpson) => console.log(simpson)); 
 }
 
-function main() {
+async function simpsonsById(id) {
+  const simpsonsJson = await fs.readFile('./simpsons.json', 'utf8');
+  const simpsons = JSON.parse(simpsonsJson);
+  const choosenSimpson = simpsons.find((simpson) => Number(simpson.id) === id);
+  if (!choosenSimpson) {
+    throw new Error('Id não encontrado');
+  }
+  return choosenSimpson;
+};
+
+async function main() {
   readAllSimpsons();
+  const simpson = await simpsonsById(9);
+  console.log(simpson);
 };
 
 main();
