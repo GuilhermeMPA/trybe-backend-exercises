@@ -28,8 +28,15 @@ async function removeSimpson() {
 async function simpsonsFamily() {
   const simpsonsJson = await fs.readFile('./simpsons.json', 'utf-8');
   const simpsons = JSON.parse(simpsonsJson);
-  const simpsonsFamily = simpsons.filter((simpson) => simpson.id >= 1 && simpson.id <= 5);
+  const simpsonsFamily = simpsons.filter((simpson) => simpson.id >= 1 && simpson.id <= 4);
   await fs.writeFile('./simpsonFamily.json', JSON.stringify(simpsonsFamily), { flag: 'wx' });
+};
+
+async function addNelsonMuntz() {
+  const simpsonsJson = await fs.readFile('./simpsonFamily.json', 'utf-8');
+  const simpsons = JSON.parse(simpsonsJson);
+  const nelsonMuntz = [...simpsons, { id: '8', name: 'Nelson Muntz' }];
+  await fs.writeFile('./simpsonFamily.json', JSON.stringify(nelsonMuntz));
 };
 
 async function main() {
@@ -38,6 +45,7 @@ async function main() {
   console.log(simpson);
   await removeSimpson();
   await simpsonsFamily();
+  await addNelsonMuntz();
 };
 
 main();
