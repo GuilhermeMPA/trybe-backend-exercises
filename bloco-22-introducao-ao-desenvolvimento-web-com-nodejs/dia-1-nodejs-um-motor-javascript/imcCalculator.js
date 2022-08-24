@@ -4,7 +4,7 @@ const imcCalculator = (weight, height) => {
   const heightInMeters = height / 100;
   const heightSquare = heightInMeters * heightInMeters;
   const imc = weight / heightSquare;
-  return imc.toFixed(1); 
+  return imc.toFixed(1);
 };
 
 const IMC_MAXIMO_E_MINIMO_POR_SITUACAO = {
